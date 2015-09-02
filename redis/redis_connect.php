@@ -28,7 +28,7 @@
     }
     */
 
-    // PHP关联数组 vs Redis字符串MSET/MGET
+    // MSET/MGET vs PHP关联数组
     $userName = array(
         'user:1:name' => 'Tom',
         'user:2:name' => 'Jack',
@@ -36,9 +36,48 @@
     $redis->mset($userName);
 
     $users = array_keys($userName);
+    print "users: ";
     print $users;
+    echo '<br>';
     //print_r($redis->mget($users));
+
+    // HMSET/HMGET/HGETALL
+    $user1 = array(
+        'name' => 'Tom',
+        'age' => '32'    
+    );
+    $redis->hmset('user:1', $user1);
+
+    $user = $redis->hgetall('user:1');
+    echo "HGETALL: "; 
+    echo $user['name'];
+    echo '<br>';
+
+    // LPUSH
+    $items = array('a', 'b');
+    $redis->lpush('list2', $items);
+
+    // SADD
+    $items2 = array('a', 'b');
+    $redis->sadd('set2', $items2);
     
+    // ZADD
+    $itemScore = array(
+        'Tom' => '100',
+        'Jack' => '89'
+    );
+    $redis->zadd('zset2', $itemScore);
+
+    // SORT 
+    $redis->sort('mylist', array(
+        'sort' => 'desc',
+        'store'=>'mylistsort'    
+    ));
+
+
+
+
+
 
 
 
