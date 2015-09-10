@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>hello.php</title>
+<title>seperate_from_html1.php</title>
 </head>
 <body>
 <p>This is going to be ignored by PHP and displayed by the browser.</p>
