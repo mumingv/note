@@ -7,6 +7,7 @@ echo "He drank some $juices[2] juice.".PHP_EOL; //Wont work
 echo "He drank some juice made of $juice[0]s.".PHP_EOL; // Wont work
 echo "He drank some juice made of $juice[0]'s.".PHP_EOL; // Wont work
 echo "He drank some $juices[koolaid1] juice.".PHP_EOL;
+//echo "He drank some $juices['koolaid1'] juice.".PHP_EOL; // 语法解析错误: key不能加引号
 
 class people {
     public $john = "John Smith";
