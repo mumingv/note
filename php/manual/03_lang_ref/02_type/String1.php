@@ -1,5 +1,5 @@
 <?php
-// Key point:
+// Key point: 单引号的使用
 // 1. 单引号中只解析\'和\\这两个转义字符，其他均直接输出（包括$var也不解析)
 echo 'this is a simple string';
 
