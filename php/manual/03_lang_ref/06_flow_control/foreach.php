@@ -1,5 +1,9 @@
 <?php
-// Key: foreach方式访问数组；
+// Key: foreach方式访问数组，以及使用while的等价方式；
+// 1. foreach ($arr as $value)
+// 2. foreach ($arr as $key => $value)
+// 3. while (list(, $value) = each($arr))
+// 4. while (list($key, $value) = each($arr))
 
 error_reporting(E_ALL);
 
