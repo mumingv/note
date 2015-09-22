@@ -78,8 +78,10 @@ bool MDict::load_from_file(const std::string& file) {
             //std::cout << word << std::endl;
             dict_entry.push_back(word);
         }
-        if (!dict_entry.size() || ((_column_num > 0) && (dict_entry.size() != _column_num))) {
-            std::cout << "ERROR: Line format is error! Line" << line_num << ":" << std::endl;
+        if (!dict_entry.size()
+            || ((_column_num > 0) && (dict_entry.size() != _column_num))) {
+            std::cout << "ERROR: Line format is error! Line"
+                << line_num << ":" << std::endl;
             std::cout << line << std::endl;
             continue;
         }
@@ -93,7 +95,8 @@ void MDict::print() {
     size_t i = 0;
     size_t j = 0;
     size_t entry_size = _dict.size();
-    std::cout << "Total number of columns is: " << _column_num << std::endl;
+    std::cout << "Total numbers of lines/columns is: "
+        << entry_size << "/" << _column_num << std::endl;
     for (i = 0; i < entry_size; i++) {
         std::cout << "Line" << i << ":";
         size_t word_size = _dict[i].size();
