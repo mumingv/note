@@ -27,7 +27,7 @@ IDLFLAGS('--compack')
 UBRPCFLAGS('--compack')
 
 #头文件路径.
-INCPATHS('. ./include ./output ./output/include')
+INCPATHS('. ./src')
 
 #使用库
 #LIBS('./librepo.a')
@@ -36,17 +36,17 @@ INCPATHS('. ./include ./output ./output/include')
 LDFLAGS('-lpthread -lcrypto -lrt')
 
 #依赖模块
-CONFIGS('lib2-64/ullib')
+#CONFIGS('lib2-64/ullib')
 
 #为32位/64位指定不同的依赖路径.
 #CONFIGS_32('lib2/ullib')
 #CONFIGS_64('lib2-64/ullib')
 
-user_sources=''
-user_headers=''
+user_sources='./src/function/*.cpp ./src/unsorted/*.cpp'
+user_headers='./src/*.h ./src/function/*.h ./src/unsorted/*.h'
 
 #可执行文件
-#Application('repo',Sources(user_sources))
+Application('repo',Sources(user_sources),OutputPath('./'))
 #静态库
 #StaticLibrary('repo',Sources(user_sources),HeaderFiles(user_headers))
 #共享库
