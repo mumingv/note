@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <sys/stat.h> 
 using namespace std; 
-int main ()
+int stat_test()
 {
     struct stat buf;
     int result;

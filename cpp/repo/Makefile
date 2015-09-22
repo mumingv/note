@@ -30,7 +30,7 @@ CCP_FLAGS=
 
 
 #COMAKE UUID
-COMAKE_MD5=9b46817b22bfa443c4767d7fa6044297  COMAKE
+COMAKE_MD5=55068a5c16cb12c700e17eb8b199a761  COMAKE
 
 
 .PHONY:all
@@ -56,8 +56,9 @@ clean:ccpclean
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mclean[0m']"
 	rm -rf repo
 	rm -rf ./repo
-	rm -rf src/function/repo_*.o
-	rm -rf src/unsorted/repo_*.o
+	rm -rf src/function/repo_main.o
+	rm -rf src/function/repo_stat.o
+	rm -rf src/unsorted/repo_test.o
 
 .PHONY:dist
 dist:
@@ -76,25 +77,29 @@ love:
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mlove[0m']"
 	@echo "make love done"
 
-repo:src/function/repo_*.o \
-  src/unsorted/repo_*.o
+repo:src/function/repo_main.o \
+  src/function/repo_stat.o \
+  src/unsorted/repo_test.o
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mrepo[0m']"
-	$(CXX) src/function/repo_*.o \
-  src/unsorted/repo_*.o -Xlinker "-("   -lpthread \
+	$(CXX) src/function/repo_main.o \
+  src/function/repo_stat.o \
+  src/unsorted/repo_test.o -Xlinker "-("   -lpthread \
   -lcrypto \
   -lrt -Xlinker "-)" -o repo
 	mkdir -p ./
 	cp -f --link repo ./
 
-src/function/repo_*.o:src/function/*.cpp \
-  src/function/stat.cpp
-	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_*.o[0m']"
-	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/function/repo_*.o src/function/*.cpp
+src/function/repo_main.o:src/function/main.cpp
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_main.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/function/repo_main.o src/function/main.cpp
 
-src/unsorted/repo_*.o:src/unsorted/*.cpp \
-  src/unsorted/test.cpp
-	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/unsorted/repo_*.o[0m']"
-	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/unsorted/repo_*.o src/unsorted/*.cpp
+src/function/repo_stat.o:src/function/stat.cpp
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_stat.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/function/repo_stat.o src/function/stat.cpp
+
+src/unsorted/repo_test.o:src/unsorted/test.cpp
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/unsorted/repo_test.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/unsorted/repo_test.o src/unsorted/test.cpp
 
 endif #ifeq ($(shell uname -m),x86_64)
 
