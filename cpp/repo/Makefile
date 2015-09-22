@@ -30,7 +30,7 @@ CCP_FLAGS=
 
 
 #COMAKE UUID
-COMAKE_MD5=55068a5c16cb12c700e17eb8b199a761  COMAKE
+COMAKE_MD5=4c3dfe241205d2414f98cb69ec3c59dd  COMAKE
 
 
 .PHONY:all
@@ -58,6 +58,7 @@ clean:ccpclean
 	rm -rf ./repo
 	rm -rf src/function/repo_main.o
 	rm -rf src/function/repo_stat.o
+	rm -rf src/test/repo_vector_2d.o
 	rm -rf src/unsorted/repo_test.o
 
 .PHONY:dist
@@ -79,10 +80,12 @@ love:
 
 repo:src/function/repo_main.o \
   src/function/repo_stat.o \
+  src/test/repo_vector_2d.o \
   src/unsorted/repo_test.o
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mrepo[0m']"
 	$(CXX) src/function/repo_main.o \
   src/function/repo_stat.o \
+  src/test/repo_vector_2d.o \
   src/unsorted/repo_test.o -Xlinker "-("   -lpthread \
   -lcrypto \
   -lrt -Xlinker "-)" -o repo
@@ -96,6 +99,10 @@ src/function/repo_main.o:src/function/main.cpp
 src/function/repo_stat.o:src/function/stat.cpp
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_stat.o[0m']"
 	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/function/repo_stat.o src/function/stat.cpp
+
+src/test/repo_vector_2d.o:src/test/vector_2d.cpp
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/test/repo_vector_2d.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/test/repo_vector_2d.o src/test/vector_2d.cpp
 
 src/unsorted/repo_test.o:src/unsorted/test.cpp
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/unsorted/repo_test.o[0m']"

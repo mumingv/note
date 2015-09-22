@@ -42,8 +42,8 @@ LDFLAGS('-lpthread -lcrypto -lrt')
 #CONFIGS_32('lib2/ullib')
 #CONFIGS_64('lib2-64/ullib')
 
-user_sources=GLOB('./src/function/*.cpp ./src/unsorted/*.cpp')
-user_headers=GLOB('./src/*.h ./src/function/*.h ./src/unsorted/*.h')
+user_sources=GLOB('./src/function/*.cpp ./src/test/*.cpp ./src/unsorted/*.cpp')
+user_headers=GLOB('./src/*.h ./src/function/*.h ./src/test/*.h ./src/unsorted/*.h')
 
 #可执行文件
 Application('repo',Sources(user_sources),OutputPath('./'))
