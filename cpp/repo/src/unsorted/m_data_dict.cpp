@@ -1,4 +1,5 @@
-/* Copyright (c) 2015-2016, Jay Yin <jay_yin at yeah dot net>
+/**
+ * Copyright (c) 2015-2016, Jay Yin <jay_yin at yeah dot net>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
