@@ -17,7 +17,10 @@ CPPFLAGS=-D_GNU_SOURCE \
   -D__STDC_LIMIT_MACROS \
   -DVERSION=\"1.9.8.7\"
 INCPATH=-I. \
-  -I./src
+  -I./src \
+  -I./src/function \
+  -I./src/test \
+  -I./src/unsorted
 DEP_INCPATH=
 
 #============ CCP vars ============
@@ -30,7 +33,7 @@ CCP_FLAGS=
 
 
 #COMAKE UUID
-COMAKE_MD5=4c3dfe241205d2414f98cb69ec3c59dd  COMAKE
+COMAKE_MD5=9ccea08d4a49cffc71620148c45a0bda  COMAKE
 
 
 .PHONY:all
@@ -56,10 +59,10 @@ clean:ccpclean
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mclean[0m']"
 	rm -rf repo
 	rm -rf ./repo
-	rm -rf src/function/repo_main.o
+	rm -rf src/repo_main.o
 	rm -rf src/function/repo_stat.o
 	rm -rf src/test/repo_vector_2d.o
-	rm -rf src/unsorted/repo_test.o
+	rm -rf src/unsorted/repo_m_data_dict.o
 
 .PHONY:dist
 dist:
@@ -78,23 +81,24 @@ love:
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mlove[0m']"
 	@echo "make love done"
 
-repo:src/function/repo_main.o \
+repo:src/repo_main.o \
   src/function/repo_stat.o \
   src/test/repo_vector_2d.o \
-  src/unsorted/repo_test.o
+  src/unsorted/repo_m_data_dict.o
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mrepo[0m']"
-	$(CXX) src/function/repo_main.o \
+	$(CXX) src/repo_main.o \
   src/function/repo_stat.o \
   src/test/repo_vector_2d.o \
-  src/unsorted/repo_test.o -Xlinker "-("   -lpthread \
+  src/unsorted/repo_m_data_dict.o -Xlinker "-("   -lpthread \
   -lcrypto \
   -lrt -Xlinker "-)" -o repo
 	mkdir -p ./
 	cp -f --link repo ./
 
-src/function/repo_main.o:src/function/main.cpp
-	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_main.o[0m']"
-	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/function/repo_main.o src/function/main.cpp
+src/repo_main.o:src/main.cpp \
+  src/unsorted/m_data_dict.h
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/repo_main.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/repo_main.o src/main.cpp
 
 src/function/repo_stat.o:src/function/stat.cpp
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_stat.o[0m']"
@@ -104,9 +108,10 @@ src/test/repo_vector_2d.o:src/test/vector_2d.cpp
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/test/repo_vector_2d.o[0m']"
 	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/test/repo_vector_2d.o src/test/vector_2d.cpp
 
-src/unsorted/repo_test.o:src/unsorted/test.cpp
-	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/unsorted/repo_test.o[0m']"
-	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/unsorted/repo_test.o src/unsorted/test.cpp
+src/unsorted/repo_m_data_dict.o:src/unsorted/m_data_dict.cpp \
+  src/unsorted/m_data_dict.h
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/unsorted/repo_m_data_dict.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/unsorted/repo_m_data_dict.o src/unsorted/m_data_dict.cpp
 
 endif #ifeq ($(shell uname -m),x86_64)
 
