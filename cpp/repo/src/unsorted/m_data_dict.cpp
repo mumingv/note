@@ -92,8 +92,8 @@ bool MDict::load_from_file(const std::string& file) {
 void MDict::print() {
     size_t i = 0;
     size_t j = 0;
-    std::cout << "Total number of columns is: " << _column_num << std::endl;
     size_t entry_size = _dict.size();
+    std::cout << "Total number of columns is: " << _column_num << std::endl;
     for (i = 0; i < entry_size; i++) {
         std::cout << "Line" << i << ":";
         size_t word_size = _dict[i].size();
