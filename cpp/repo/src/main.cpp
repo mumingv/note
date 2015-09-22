@@ -7,6 +7,7 @@ int main()
     MDict dict;
     std::string file("./data/m_data_dict.data");
     dict.load_from_file(file);
+    dict.print();
     return 0;
 }
  
