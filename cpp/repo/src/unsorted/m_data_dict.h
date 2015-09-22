@@ -35,9 +35,11 @@
 class MDict {
 public:
     MDict(); 
+    MDict(uint32_t column_num); 
     ~MDict(); 
     bool load_from_file(const std::string& file);
     void print();
 private:
+    uint32_t _column_num;
     std::vector<std::vector<std::string> > _dict;
 };

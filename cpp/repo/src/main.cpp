@@ -4,7 +4,7 @@
 //int main(int argc, char* argv[])
 int main()
 {
-    MDict dict;
+    MDict dict(10);
     std::string file("./data/m_data_dict.data");
     dict.load_from_file(file);
     dict.print();

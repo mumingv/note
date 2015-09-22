@@ -30,6 +30,10 @@
 #include "m_data_dict.h"
 
 MDict::MDict() {
+    _column_num = 0;
+}
+MDict::MDict(uint32_t column_num) {
+    _column_num = column_num;
 }
 
 MDict::~MDict() {
@@ -42,6 +46,7 @@ bool MDict::load_from_file(const std::string& file) {
         return false;
     }
 
+    size_t line_num = 0;
     std::string line;
     /**
      * istream& getline (char* s, streamsize n );
@@ -54,6 +59,7 @@ bool MDict::load_from_file(const std::string& file) {
      */
     while (std::getline(ifs, line)) {
         //std::cout << line << std::endl;
+        line_num++;
         std::string word;
         std::vector<std::string> dict_entry;
         std::istringstream iss(line, std::istringstream::in);
@@ -72,23 +78,32 @@ bool MDict::load_from_file(const std::string& file) {
             //std::cout << word << std::endl;
             dict_entry.push_back(word);
         }
-        if (dict_entry.size()) {
-            _dict.push_back(dict_entry);
+        if (!dict_entry.size() || ((_column_num > 0) && (dict_entry.size() != _column_num))) {
+            std::cout << "ERROR: Line format is error! Line" << line_num << ":" << std::endl;
+            std::cout << line << std::endl;
+            continue;
         }
+        _dict.push_back(dict_entry);
     }
 
     return true;
 }
 
 void MDict::print() {
+    size_t i = 0;
+    size_t j = 0;
+    std::cout << "Total number of columns is: " << _column_num << std::endl;
     size_t entry_size = _dict.size();
-    for (size_t i = 0; i < entry_size; i++) {
+    for (i = 0; i < entry_size; i++) {
         std::cout << "Line" << i << ":";
         size_t word_size = _dict[i].size();
-        for (size_t j = 0; j < word_size; j++) {
+        for (j = 0; j < word_size; j++) {
             std::cout << " " << _dict[i][j];
         }
         std::cout << std::endl;
+    }
+    if ((i == 0) && (j == 0)) {
+        std::cout << "Dict is empty!" << std::endl;
     }
     return;
 }
