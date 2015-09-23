@@ -6,3 +6,31 @@
 
 #IncludeRegexTransform: 
 
+/root/git/yinjie05/cpp/gflags/demo.cpp
+iostream
+-
+gflags/gflags.h
+-
+
+/root/local/gflags-2.1.2/include/gflags/gflags.h
+string
+-
+vector
+-
+gflags_declare.h
+/root/local/gflags-2.1.2/include/gflags/gflags_declare.h
+gflags_gflags.h
+/root/local/gflags-2.1.2/include/gflags/gflags_gflags.h
+
+/root/local/gflags-2.1.2/include/gflags/gflags_declare.h
+string
+-
+stdint.h
+-
+sys/types.h
+-
+inttypes.h
+-
+
+/root/local/gflags-2.1.2/include/gflags/gflags_gflags.h
+
