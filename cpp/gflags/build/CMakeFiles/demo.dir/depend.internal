@@ -3,6 +3,13 @@
 
 CMakeFiles/demo.dir/demo.cpp.o
  /root/git/yinjie05/cpp/gflags/demo.cpp
+ /root/git/yinjie05/cpp/gflags/logic.h
+ /root/local/gflags-2.1.2/include/gflags/gflags.h
+ /root/local/gflags-2.1.2/include/gflags/gflags_declare.h
+ /root/local/gflags-2.1.2/include/gflags/gflags_gflags.h
+CMakeFiles/demo.dir/logic.cpp.o
+ /root/git/yinjie05/cpp/gflags/logic.cpp
+ /root/git/yinjie05/cpp/gflags/logic.h
  /root/local/gflags-2.1.2/include/gflags/gflags.h
  /root/local/gflags-2.1.2/include/gflags/gflags_declare.h
  /root/local/gflags-2.1.2/include/gflags/gflags_gflags.h

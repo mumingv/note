@@ -6,7 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/root/git/yinjie05/cpp/gflags/demo.cpp
+/root/git/yinjie05/cpp/gflags/logic.cpp
+logic.h
+/root/git/yinjie05/cpp/gflags/logic.h
+
+/root/git/yinjie05/cpp/gflags/logic.h
+stdio.h
+-
 iostream
 -
 gflags/gflags.h

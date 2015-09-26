@@ -5,6 +5,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/root/git/yinjie05/cpp/gflags/demo.cpp" "/root/git/yinjie05/cpp/gflags/build/CMakeFiles/demo.dir/demo.cpp.o"
+  "/root/git/yinjie05/cpp/gflags/logic.cpp" "/root/git/yinjie05/cpp/gflags/build/CMakeFiles/demo.dir/logic.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

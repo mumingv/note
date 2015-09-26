@@ -138,6 +138,30 @@ demo.cpp.s:
 	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/demo.cpp.s
 .PHONY : demo.cpp.s
 
+logic.o: logic.cpp.o
+.PHONY : logic.o
+
+# target to build an object file
+logic.cpp.o:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/logic.cpp.o
+.PHONY : logic.cpp.o
+
+logic.i: logic.cpp.i
+.PHONY : logic.i
+
+# target to preprocess a source file
+logic.cpp.i:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/logic.cpp.i
+.PHONY : logic.cpp.i
+
+logic.s: logic.cpp.s
+.PHONY : logic.s
+
+# target to generate assembly for a file
+logic.cpp.s:
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/logic.cpp.s
+.PHONY : logic.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -150,6 +174,9 @@ help:
 	@echo "... demo.o"
 	@echo "... demo.i"
 	@echo "... demo.s"
+	@echo "... logic.o"
+	@echo "... logic.i"
+	@echo "... logic.s"
 .PHONY : help
 
 

@@ -75,14 +75,39 @@ CMakeFiles/demo.dir/demo.cpp.o.provides: CMakeFiles/demo.dir/demo.cpp.o.requires
 
 CMakeFiles/demo.dir/demo.cpp.o.provides.build: CMakeFiles/demo.dir/demo.cpp.o
 
+CMakeFiles/demo.dir/logic.cpp.o: CMakeFiles/demo.dir/flags.make
+CMakeFiles/demo.dir/logic.cpp.o: ../logic.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /root/git/yinjie05/cpp/gflags/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/demo.dir/logic.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/demo.dir/logic.cpp.o -c /root/git/yinjie05/cpp/gflags/logic.cpp
+
+CMakeFiles/demo.dir/logic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo.dir/logic.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /root/git/yinjie05/cpp/gflags/logic.cpp > CMakeFiles/demo.dir/logic.cpp.i
+
+CMakeFiles/demo.dir/logic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo.dir/logic.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /root/git/yinjie05/cpp/gflags/logic.cpp -o CMakeFiles/demo.dir/logic.cpp.s
+
+CMakeFiles/demo.dir/logic.cpp.o.requires:
+.PHONY : CMakeFiles/demo.dir/logic.cpp.o.requires
+
+CMakeFiles/demo.dir/logic.cpp.o.provides: CMakeFiles/demo.dir/logic.cpp.o.requires
+	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/logic.cpp.o.provides.build
+.PHONY : CMakeFiles/demo.dir/logic.cpp.o.provides
+
+CMakeFiles/demo.dir/logic.cpp.o.provides.build: CMakeFiles/demo.dir/logic.cpp.o
+
 # Object files for target demo
 demo_OBJECTS = \
-"CMakeFiles/demo.dir/demo.cpp.o"
+"CMakeFiles/demo.dir/demo.cpp.o" \
+"CMakeFiles/demo.dir/logic.cpp.o"
 
 # External object files for target demo
 demo_EXTERNAL_OBJECTS =
 
 demo: CMakeFiles/demo.dir/demo.cpp.o
+demo: CMakeFiles/demo.dir/logic.cpp.o
 demo: CMakeFiles/demo.dir/build.make
 demo: CMakeFiles/demo.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable demo"
@@ -93,6 +118,7 @@ CMakeFiles/demo.dir/build: demo
 .PHONY : CMakeFiles/demo.dir/build
 
 CMakeFiles/demo.dir/requires: CMakeFiles/demo.dir/demo.cpp.o.requires
+CMakeFiles/demo.dir/requires: CMakeFiles/demo.dir/logic.cpp.o.requires
 .PHONY : CMakeFiles/demo.dir/requires
 
 CMakeFiles/demo.dir/clean:

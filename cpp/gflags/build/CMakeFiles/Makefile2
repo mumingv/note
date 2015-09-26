@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /root/git/yinjie05/cpp/gflags/build
 CMakeFiles/demo.dir/all:
 	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/depend
 	$(MAKE) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /root/git/yinjie05/cpp/gflags/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /root/git/yinjie05/cpp/gflags/build/CMakeFiles  1 2
 	@echo "Built target demo"
 .PHONY : CMakeFiles/demo.dir/all
 
@@ -72,7 +72,7 @@ all: CMakeFiles/demo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/git/yinjie05/cpp/gflags/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/git/yinjie05/cpp/gflags/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/demo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/git/yinjie05/cpp/gflags/build/CMakeFiles 0
 .PHONY : CMakeFiles/demo.dir/rule
