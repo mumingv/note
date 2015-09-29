@@ -61,6 +61,7 @@ clean:ccpclean
 	rm -rf ./repo
 	rm -rf src/repo_main.o
 	rm -rf src/function/repo_stat.o
+	rm -rf src/test/repo_multimap_dict.o
 	rm -rf src/test/repo_vector_2d.o
 	rm -rf src/unsorted/repo_m_data_dict.o
 
@@ -83,11 +84,13 @@ love:
 
 repo:src/repo_main.o \
   src/function/repo_stat.o \
+  src/test/repo_multimap_dict.o \
   src/test/repo_vector_2d.o \
   src/unsorted/repo_m_data_dict.o
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40mrepo[0m']"
 	$(CXX) src/repo_main.o \
   src/function/repo_stat.o \
+  src/test/repo_multimap_dict.o \
   src/test/repo_vector_2d.o \
   src/unsorted/repo_m_data_dict.o -Xlinker "-("   -lpthread \
   -lcrypto \
@@ -96,13 +99,19 @@ repo:src/repo_main.o \
 	cp -f --link repo ./
 
 src/repo_main.o:src/main.cpp \
-  src/unsorted/m_data_dict.h
+  src/unsorted/m_data_dict.h \
+  src/test/multimap_dict.h
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/repo_main.o[0m']"
 	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/repo_main.o src/main.cpp
 
 src/function/repo_stat.o:src/function/stat.cpp
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/function/repo_stat.o[0m']"
 	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/function/repo_stat.o src/function/stat.cpp
+
+src/test/repo_multimap_dict.o:src/test/multimap_dict.cpp \
+  src/test/multimap_dict.h
+	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/test/repo_multimap_dict.o[0m']"
+	$(CXX) -c $(INCPATH) $(DEP_INCPATH) $(CPPFLAGS) $(CXXFLAGS)  -o src/test/repo_multimap_dict.o src/test/multimap_dict.cpp
 
 src/test/repo_vector_2d.o:src/test/vector_2d.cpp
 	@echo "[[1;32;40mCOMAKE:BUILD[0m][Target:'[1;32;40msrc/test/repo_vector_2d.o[0m']"
